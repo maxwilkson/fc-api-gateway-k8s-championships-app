@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "players.fullname" . }}
+  name: {{ include "championships.fullname" . }}
   labels:
-    {{- include "players.labels" . | nindent 4 }}
+    {{- include "championships.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "players.fullname" . }}
+    name: {{ include "championships.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
